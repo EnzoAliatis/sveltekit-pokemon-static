@@ -1,6 +1,11 @@
 import { pokeApi } from '../api';
 import type { PokemonListResponse, SmallPokemon } from '../interfaces';
 
+export const prerender = true;
+
+
+
+
 export async function load() {
   const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151');
 
@@ -9,8 +14,6 @@ export async function load() {
     id: idx + 1,
     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${idx+1}.svg`,
   }))
-
-  console.log(data.results)
 
   return {
     pokemons,

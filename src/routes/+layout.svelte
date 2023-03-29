@@ -14,6 +14,6 @@
 <!-- TODO: add light mode -->
 
 <Navbar />
-<main class="py-0 px-5">
+<main class="p-5 ">
   <slot />
 </main>
