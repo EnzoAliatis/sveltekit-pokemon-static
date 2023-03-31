@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center items-center">
+<div class="flex flex-col justify-center items-center h-[calc(100vh-180px)]">
 	<h1 class="text-6xl font-bold tracking-tighter">No hay favoritos</h1>
 	<img
     class="opacity-25 h-52 my-8"

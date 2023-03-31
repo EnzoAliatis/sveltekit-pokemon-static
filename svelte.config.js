@@ -1,8 +1,18 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
+const getAllPokeRoutesByNamesFunc = async () => {
+  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
+	const { results } = await response.json()
+
+  const pokemonsRoutes = results.map((pk) => (`/name/${pk.name}`));
+
+  return pokemonsRoutes
+}
+
 
 const pokemons151 = [...Array(151)].map((val, idx) => `/pokemon/${idx + 1}`);
+const pokemons151ByName = await getAllPokeRoutesByNamesFunc();
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -16,7 +26,7 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		prerender: {
-			entries: pokemons151,
+			entries: [...pokemons151, ...pokemons151ByName]
 		}
 	}
 };
