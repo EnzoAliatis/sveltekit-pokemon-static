@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	import confetti from 'canvas-confetti';
 	import { localFavorites } from '../../../utils';
 	import type { PageData } from './$types';
@@ -25,6 +27,11 @@
 
 <svelte:head>
 	<title>{data.name}</title>
+
+	<meta property="og:title" content={`Informacion sobre el pokemon ${data.name}`} />
+  <meta property="og:description" content={`Esta es una pagina sobre el pokemon ${data.name}`} />
+  <meta property="og:image" content={`${$page.url.origin}/banner.png`} />
+
 </svelte:head>
 
 <div class="flex justify-center">

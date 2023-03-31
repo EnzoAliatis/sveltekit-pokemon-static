@@ -1,14 +1,7 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
-const getAllPokeRoutesByNamesFunc = async () => {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
-	const { results } = await response.json()
-
-  const pokemonsRoutes = results.map((pk) => (`/name/${pk.name}`));
-
-  return pokemonsRoutes
-}
+import { getAllPokeRoutesByNamesFunc } from './utils.js';
 
 
 const pokemons151 = [...Array(151)].map((val, idx) => `/pokemon/${idx + 1}`);
